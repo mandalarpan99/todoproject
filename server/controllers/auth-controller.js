@@ -87,11 +87,31 @@ const userPost =async (req, res)=>{
 
 const viewuserPost = async (req, res)=>{
     try {
-        
+        console.log(req.userID);
+        const userId = req.userID;
+        const data = await postData.find({custid: userId});
+        res.status(200).json(data)
     } catch (error) {
-        
+        console.log({"Error from the view post": error})
+        res.status(404).json({message:error})
     }
 }
 
 
-module.exports = {register, login, user, userPost, viewuserPost};
+
+const deleteById = async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const idExists = await postData.findOne({_id: id});
+        if(!idExists){
+            res.status(404).json({message: "Post is not available!"})
+        }
+        await postData.deleteOne({_id:id})
+        res.status(200).json({message:"Post deleted successfilly"});
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+module.exports = {register, login, user, userPost, viewuserPost, deleteById};

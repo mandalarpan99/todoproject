@@ -13,7 +13,8 @@ router.route('/register').post(validate(signup),Authcontroller.register);
 router.route('/').post(validate(loginSchema),Authcontroller.login);
 router.route('/user').get(authMiddleware, Authcontroller.user);
 router.route('/userpost').post(validate(postdata) ,Authcontroller.userPost);
-router.route('/viewuserpost').post(authMiddleware, viewPostmiddleware, Authcontroller.viewuserPost);
+router.route('/viewuserpost').get(authMiddleware, Authcontroller.viewuserPost);
+router.route('/user/delete/:id').delete(authMiddleware, Authcontroller.deleteById);
 
 
 module.exports = router;

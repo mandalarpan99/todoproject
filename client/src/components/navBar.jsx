@@ -11,12 +11,13 @@ export const NavBar = ()=>{
     <header>
     <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="/">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/">TODO - Your daily thought</Navbar.Brand>
           <Nav className="me-auto">
           {
               isLoggedIn ? (
                 <>
-                <NavLink className ="nav-link" to="/logout">Post</NavLink>
+                <NavLink className ="nav-link" to="/user">User</NavLink>
+                <NavLink className ="nav-link" to="/post">Post</NavLink>
                 <NavLink className ="nav-link" to="/logout">Logout</NavLink>
                 
                 </>

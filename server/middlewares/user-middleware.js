@@ -15,7 +15,7 @@ const authMiddleware = async (req, res, next)=>{
         //console.log("from user middleware side",userdata);
         req.user = userdata;
         req.token = token;
-        req.userTD = userdata._id;
+        req.userID = userdata._id;
         next();
     } catch (error) {
         return res.status(401).json({message: "Unauthorzed HTTP, token not provide"});

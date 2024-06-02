@@ -5,6 +5,7 @@ import {Login} from "./assets/Login";
 import {NavBar} from "./components/navBar";
 import { Logout } from './assets/Logout';
 import {User} from './assets/User';
+import { Posts } from './assets/Posts';
 const App = ()=>{
   return <>
     <BrowserRouter>
@@ -14,6 +15,7 @@ const App = ()=>{
         <Route path='/registration' element={<Registration />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/user' element={<User />} />
+        <Route path='/post' element={<Posts />} />
       </Routes>
     </BrowserRouter>
 

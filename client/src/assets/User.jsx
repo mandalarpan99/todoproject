@@ -25,7 +25,7 @@ export const User = ()=>{
         setuserData(false);
     }
     const navigate = useNavigate();
-    //console.log(user._id);
+    console.log(user._id);
     //console.log(token);
     const userName = user.name;
     const formHandler = (e)=>{
