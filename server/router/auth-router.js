@@ -15,6 +15,8 @@ router.route('/user').get(authMiddleware, Authcontroller.user);
 router.route('/userpost').post(validate(postdata) ,Authcontroller.userPost);
 router.route('/viewuserpost').get(authMiddleware, Authcontroller.viewuserPost);
 router.route('/user/delete/:id').delete(authMiddleware, Authcontroller.deleteById);
+router.route('/user/viewuserpost/:id').get(authMiddleware, Authcontroller.getPostById);
+router.route('/user/viewuserpost/edit/:id').patch(authMiddleware, Authcontroller.editPostById);
 
 
 module.exports = router;

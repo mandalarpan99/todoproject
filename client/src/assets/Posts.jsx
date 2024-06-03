@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth"
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -79,13 +79,14 @@ export const Posts = ()=>{
                 const {title, post, date} = curElm;
                 return <>
                     <tr key={index}>
-                        <td>{index}</td>
+                        <td>{index+1}</td>
                         <td>{title}</td>
                         <td>{post}</td>
                         <td>{date}</td>
-                        <td><Button variant="warning" type="submit" >
-                        <GrUpdate />
-                        </Button></td>
+                        <td>
+                        <Link className="btn btn-warning" to={`/update/${curElm._id}`}><GrUpdate /></Link>
+                        
+                        </td>
                         <td><Button variant="danger" type="submit" onClick={()=>deleteUserpost(curElm._id)}>
                         <AiTwotoneDelete />
                         </Button></td>

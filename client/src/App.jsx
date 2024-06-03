@@ -6,6 +6,7 @@ import {NavBar} from "./components/navBar";
 import { Logout } from './assets/Logout';
 import {User} from './assets/User';
 import { Posts } from './assets/Posts';
+import {UpdatePost} from './assets/Update-post';
 const App = ()=>{
   return <>
     <BrowserRouter>
@@ -16,6 +17,7 @@ const App = ()=>{
         <Route path='/logout' element={<Logout />} />
         <Route path='/user' element={<User />} />
         <Route path='/post' element={<Posts />} />
+        <Route path='/update/:id' element={<UpdatePost />} />
       </Routes>
     </BrowserRouter>
 

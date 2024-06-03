@@ -114,4 +114,33 @@ const deleteById = async (req, res)=>{
 }
 
 
-module.exports = {register, login, user, userPost, viewuserPost, deleteById};
+const getPostById = async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const idExists = await postData.findOne({_id: id});
+        if(!idExists){
+            res.status(404).json({message: "Post is not available!"})
+        }
+        const data = await postData.findOne({_id:id})
+        res.status(200).json(data);
+    } catch (error) {
+        //next(error)
+        console.log({"Error from user post": error})
+    }
+}
+
+const editPostById = async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const updateData = await postData.updateOne({_id:id},{
+            $set: updatedData,
+        })
+        res.status(200).json(updateData);
+    } catch (error) {
+        console.log({"Error from user post": error})
+    }
+}
+
+
+module.exports = {register, login, user, userPost, viewuserPost, deleteById, getPostById, editPostById};
