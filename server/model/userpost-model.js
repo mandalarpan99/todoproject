@@ -10,6 +10,9 @@ const postShema = Schema({
         type: String,
         required: true
     },
+    file:{
+        type: String,
+    },
     post:{
         type: String,
         required: true

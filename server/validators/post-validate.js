@@ -4,9 +4,9 @@ const {z} = require("zod");
 
 //Registration validator
 const postdata = z.object ({
-    custid: z
-    .string({required_error: "Customer id must be needed"})
-    .trim(),
+    // custid: z
+    // .string({required_error: "Customer id must be needed"})
+    // .trim(),
     title: z
     .string({required_error: "Write a title"})
     .trim()

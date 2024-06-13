@@ -47,7 +47,8 @@ export const Login = ()=>{
             navigate('/user')
 
         }else{
-            toast.error(res_data.extraDetails);
+            
+            toast.error("User are not exists");
             setLoginData({
                 email:"",
                 password:""

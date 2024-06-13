@@ -66,12 +66,18 @@ const user = async (req, res)=>{
 
 
 
-const userPost =async (req, res)=>{
+const userPost =async (req, res, next)=>{
+    res.send("OK")
     try {
-        //console.log(req.body)
-        const { custid, title, post} = req.body;
-        const data = postData.create({custid, title, post});
-        //console.log(data)
+        const custid = req.body.custid;
+        const title = req.body.title;
+        const post = req.body.post;
+        const filename = req.file.filename;
+        console.log(req.file)
+        //const { custid, title, post} = req.body;
+        console.log(custid)
+        const data = postData.create({custid:custid, title:title, file:filename, post:post});
+        console.log(data)
         if(data){
             res.status(200).json({
                 message:"Data insert successful", 
@@ -87,6 +93,7 @@ const userPost =async (req, res)=>{
 
 const viewuserPost = async (req, res)=>{
     try {
+
         console.log(req.userID);
         const userId = req.userID;
         const data = await postData.find({custid: userId});

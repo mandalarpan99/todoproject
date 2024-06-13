@@ -53,6 +53,16 @@ export const Posts = ()=>{
     useEffect(()=>{
         getAlluserspost();
     },[])
+    const showImage = (img)=>{
+        // window.open(`http://localhost:5000/uploads/${img}`)
+        let newWindow = open(`http://localhost:5000/uploads/${img}`, 'example', 'width=500,height=500')
+        newWindow.focus();
+
+        newWindow.onload = function() {
+        let html = `<div style="font-size:30px">Welcome!</div>`;
+        newWindow.document.body.insertAdjacentHTML('afterbegin', html);
+};
+    }
     if(!token){
         toast.error("You are not login");
         console.log("You are not login");
@@ -67,6 +77,7 @@ export const Posts = ()=>{
         <tr>
           <th>No</th>
           <th>Title</th>
+          <th>Image</th>
           <th>Your thought</th>
           <th>Date</th>
           <th>Edit</th>
@@ -76,11 +87,17 @@ export const Posts = ()=>{
       <tbody>
       {
             userPost.map((curElm, index)=>{
-                const {title, post, date} = curElm;
+                const {title,file, post, date} = curElm;
+                const imgURL = `http://localhost:5000/uploads/${file}`;
+                console.log(imgURL)
                 return <>
                     <tr key={index}>
                         <td>{index+1}</td>
                         <td>{title}</td>
+                        <td><Button variant="danger" type="submit" onClick={()=>showImage(file)}>
+                        Show image
+                        </Button></td>
+                        {/* <td><img src="imgURL"/>{file}</td> */}
                         <td>{post}</td>
                         <td>{date}</td>
                         <td>
